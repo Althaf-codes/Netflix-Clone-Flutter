@@ -10,9 +10,9 @@ class Video {
   String videoType;
   bool hasNewEpisodes;
   bool isTop10;
-  int duration;
-  int rating;
-  int views;
+  double duration;
+  double rating;
+  double views;
   String thumbnail;
   List<Poster> relatedVideos;
   List<Season> seasons;
@@ -57,9 +57,9 @@ class Video {
     String? videoType,
     bool? hasNewEpisodes,
     bool? isTop10,
-    int? duration,
-    int? rating,
-    int? views,
+    double? duration,
+    double? rating,
+    double? views,
     String? thumbnail,
     List<Poster>? relatedVideos,
     List<Season>? seasons,
@@ -108,9 +108,9 @@ class Video {
         videoType: json["videoType"] ?? '',
         hasNewEpisodes: json["hasNewEpisodes"] ?? '',
         isTop10: json["isTop10"] ?? '',
-        duration: json["duration"] ?? '',
-        rating: json["rating"] ?? '',
-        views: json["views"] ?? '',
+        duration: json["duration"] ?? 0,
+        rating: json["rating"] ?? 0,
+        views: json["views"] ?? 0,
         thumbnail: json["thumbnail"] ?? '',
         relatedVideos: List<Poster>.from(
             json['relatedVideos'].map((x) => Poster.fromMap(x))),

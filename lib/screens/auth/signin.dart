@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix_clone/blocs/signIn/signin_bloc.dart';
+import 'package:netflix_clone/blocs/user/user_bloc.dart';
 import 'package:netflix_clone/constant/colors.dart';
 import 'package:netflix_clone/utils/extensions/num_extensions.dart';
 import 'package:netflix_clone/widgets/snackbar.dart';

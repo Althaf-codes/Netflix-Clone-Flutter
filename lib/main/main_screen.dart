@@ -16,15 +16,27 @@ class _MainScreenState extends State<MainScreen> {
 
   final List<Widget> _screens = const [
     HomeScreen(),
-    Center(
-      child: Text('New & Hot'),
+    Scaffold(
+      backgroundColor: AppColor.black,
+      body: Center(
+        child: Text(
+          'New & Hot',
+          style: TextStyle(color: Colors.white),
+        ),
+      ),
     ),
-    Center(
-      child: Text('Fast Laughs'),
+    Scaffold(
+      backgroundColor: AppColor.black,
+      body: Center(
+        child: Text('Fast Laughs', style: TextStyle(color: Colors.white)),
+      ),
     ),
     SearchScreen(),
-    Center(
-      child: Text('Downloads'),
+    Scaffold(
+      backgroundColor: AppColor.black,
+      body: Center(
+        child: Text('Downloads', style: TextStyle(color: Colors.white)),
+      ),
     ),
   ];
   @override

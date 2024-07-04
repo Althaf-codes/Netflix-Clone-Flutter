@@ -1,19 +1,22 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 import 'package:netflix_clone/constant/assets.dart';
 import 'package:netflix_clone/constant/colors.dart';
+import 'package:netflix_clone/models/poster_model.dart';
 
 class MovieCard extends StatelessWidget {
   double height;
   double width;
 
-  String url;
+  // String url;
+  Poster poster;
 
   MovieCard({
     Key? key,
     required this.height,
     required this.width,
-    required this.url,
+    required this.poster,
   }) : super(key: key);
 
   @override
@@ -22,7 +25,7 @@ class MovieCard extends StatelessWidget {
         height: height,
         width: width,
         decoration: const BoxDecoration(
-            color: Colors.blue,
+            // color: Colors.blue,
             borderRadius: BorderRadius.all(Radius.circular(12))
             // image:
             //     DecorationImage(image: NetworkImage(url), fit: BoxFit.cover)
@@ -31,7 +34,7 @@ class MovieCard extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(12),
             child: Image.network(
-              url,
+              poster.thumbnail,
               width: 150,
               alignment: Alignment.center,
               fit: BoxFit.cover,
@@ -66,48 +69,52 @@ class MovieCard extends StatelessWidget {
               ),
             ),
           ),
-          Align(
-            alignment: Alignment.topRight,
-            child: Container(
-              height: 25,
-              width: 25,
-              decoration: BoxDecoration(
-                  borderRadius:
-                      BorderRadius.only(topRight: Radius.circular(12)),
-                  color: AppColor.redDark1),
-              child: const Column(
-                children: [
-                  Text(
-                    'Top',
-                    style: TextStyle(color: Colors.white, fontSize: 6),
+          poster.isTop10
+              ? Align(
+                  alignment: Alignment.topRight,
+                  child: Container(
+                    height: 25,
+                    width: 25,
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            BorderRadius.only(topRight: Radius.circular(12)),
+                        color: AppColor.redDark1),
+                    child: const Column(
+                      children: [
+                        Text(
+                          'Top',
+                          style: TextStyle(color: Colors.white, fontSize: 6),
+                        ),
+                        Text(
+                          '10',
+                          style: TextStyle(color: Colors.white, fontSize: 6),
+                        )
+                      ],
+                    ),
                   ),
-                  Text(
-                    '10',
-                    style: TextStyle(color: Colors.white, fontSize: 6),
-                  )
-                ],
-              ),
-            ),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              height: 15,
-              width: 80,
-              color: AppColor.redDark1,
-              child: Center(
-                child: Text(
-                  'NEW EPISODES',
-                  // textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 7,
-                      letterSpacing: 1,
-                      fontWeight: FontWeight.w400),
-                ),
-              ),
-            ),
-          )
+                )
+              : const SizedBox.shrink(),
+          poster.hasNewEpisodes
+              ? Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    height: 15,
+                    width: 80,
+                    color: AppColor.redDark1,
+                    child: Center(
+                      child: Text(
+                        'NEW EPISODES',
+                        // textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 7,
+                            letterSpacing: 1,
+                            fontWeight: FontWeight.w400),
+                      ),
+                    ),
+                  ),
+                )
+              : const SizedBox.shrink()
         ]));
   }
 }

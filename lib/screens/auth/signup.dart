@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix_clone/blocs/signIn/signin_bloc.dart';
 import 'package:netflix_clone/blocs/signup/signup_bloc.dart';
+import 'package:netflix_clone/blocs/user/user_bloc.dart';
 import 'package:netflix_clone/constant/colors.dart';
 import 'package:netflix_clone/models/user_model.dart';
 import 'package:netflix_clone/widgets/snackbar.dart';
@@ -355,7 +356,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               context.read<SignUpBloc>().add(SignUpRequired(
                                   user,
                                   emailController.text,
-                                  passwordController.text));
+                                  passwordController.text,
+                                  usernamecontroller.text));
                             }
                           },
                           child: const Text(

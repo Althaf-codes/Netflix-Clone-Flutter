@@ -3,6 +3,10 @@ import 'dart:convert';
 import 'package:equatable/equatable.dart';
 import 'package:netflix_clone/models/poster_model.dart';
 
+// userModel should fetch aggregated data for watchhistory, watchlist, favorites while getting user from server.
+
+//BUT in this project for now in order to keep it simple we get data from continue-watching endpoint.
+
 class UserModel extends Equatable {
   final String username;
   final String email;
@@ -66,10 +70,12 @@ class UserModel extends Equatable {
         subscription: Subscription.fromMap(json["subscription"]),
         watchHistory: List<WatchHistory>.from(
             json["watchHistory"].map((x) => WatchHistory.fromMap(x))),
-        favorites:
-            List<Poster>.from(json["favorites"].map((x) => Poster.fromMap(x))),
-        watchlist:
-            List<Poster>.from(json["watchlist"].map((x) => Poster.fromMap(x))),
+        favorites: List<Poster>.from(
+                json["favorites"].map((x) => Poster.fromMap(x))) ??
+            [],
+        watchlist: List<Poster>.from(
+                json["watchlist"].map((x) => Poster.fromMap(x))) ??
+            [],
         preferences: Preferences.fromMap(json["preferences"]),
       );
 
@@ -164,27 +170,27 @@ class Subscription {
 }
 
 class WatchHistory {
-  // String videoId;
-  Poster poster;
+  String videoId;
+  // Poster poster;
   String watchedAt;
   int progress;
 
   WatchHistory({
-    // required this.videoId,
-    required this.poster,
+    required this.videoId,
+    // required this.poster,
     required this.watchedAt,
     required this.progress,
   });
 
   WatchHistory copyWith({
-    // String? videoId,
-    Poster? poster,
+    String? videoId,
+    // Poster? poster,
     String? watchedAt,
     int? progress,
   }) =>
       WatchHistory(
-        // videoId: videoId ?? this.videoId,
-        poster: poster ?? this.poster,
+        videoId: videoId ?? this.videoId,
+        // poster: poster ?? this.poster,
         watchedAt: watchedAt ?? this.watchedAt,
         progress: progress ?? this.progress,
       );
@@ -195,15 +201,15 @@ class WatchHistory {
   String toJson() => json.encode(toMap());
 
   factory WatchHistory.fromMap(Map<String, dynamic> json) => WatchHistory(
-        // videoId: json["videoId"] ?? '',
-        poster: Poster.fromJson(json['poster']),
+        videoId: json["videoId"] ?? '',
+        // poster: Poster.fromMap(json),
         watchedAt: json["watchedAt"] ?? '',
         progress: json["progress"] ?? '',
       );
 
   Map<String, dynamic> toMap() => {
-        // "videoId": videoId,
-        "poster": poster.toMap(),
+        "videoId": videoId,
+        // "poster": poster.toMap(),
         "watchedAt": watchedAt,
         "progress": progress,
       };

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/constant/colors.dart';
 import 'package:netflix_clone/constant/my_flutter_app_icons.dart';
+import 'package:netflix_clone/models/poster_model.dart';
 import 'package:netflix_clone/screens/search/component/suggested_movie_card.dart';
 import 'package:netflix_clone/widgets/movie_card.dart';
 
@@ -31,6 +32,7 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.black,
       body: SingleChildScrollView(
           controller: _scrollController,
           child: Padding(
@@ -186,10 +188,23 @@ class _SearchScreenState extends State<SearchScreen> {
                       itemCount: 15,
                       itemBuilder: (context, index) {
                         return MovieCard(
-                            height: 150,
-                            width: 150,
-                            url:
-                                'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/adventure-movie-poster-template-design-7b13ea2ab6f64c1ec9e1bb473f345547_screen.jpg?ts=1636999411');
+                          height: 150,
+                          width: 150,
+                          poster: Poster(
+                              id: '',
+                              title: "Mystery at the Manor",
+                              description:
+                                  "A detective solves a mystery at a secluded manor.",
+                              genre: ["Mystery", "Drama"],
+                              videoType: "Movie",
+                              hasNewEpisodes: false,
+                              isTop10: true,
+                              duration: 105,
+                              rating: 4.5,
+                              views: 83400,
+                              thumbnail:
+                                  'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/adventure-movie-poster-template-design-7b13ea2ab6f64c1ec9e1bb473f345547_screen.jpg?ts=1636999411'),
+                        );
                       })
                   : SizedBox.shrink()
             ]),

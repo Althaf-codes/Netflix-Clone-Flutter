@@ -3,8 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix_clone/blocs/auth/authentication_bloc.dart';
 import 'package:netflix_clone/blocs/signIn/signin_bloc.dart';
 import 'package:netflix_clone/blocs/signup/signup_bloc.dart';
+import 'package:netflix_clone/blocs/user/user_bloc.dart';
+import 'package:netflix_clone/repositories/user_repository/user_repo_impl.dart';
 import 'package:netflix_clone/screens/auth/signin.dart';
 import 'package:netflix_clone/screens/auth/signup.dart';
+import 'package:netflix_clone/services/user/user_services_impl.dart';
 
 class Toggle extends StatefulWidget {
   const Toggle({Key? key}) : super(key: key);
@@ -29,15 +32,31 @@ class _AuthState extends State<Toggle> {
   @override
   Widget build(BuildContext context) {
     if (showSignUp) {
-      return BlocProvider(
-        create: (context) => SignUpBloc(
-            authRepository: context.read<AuthenticationBloc>().authRepository),
+      return MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => SignUpBloc(
+                authRepository:
+                    context.read<AuthenticationBloc>().authRepository,
+                userRepo: context.read<SignUpBloc>().userRepo),
+          ),
+          // BlocProvider(
+          //     create: (context) => UserBloc(baseUserService: UserServices()))
+        ],
         child: SignUpScreen(toggleView: toggleview),
       );
     } else {
-      return BlocProvider(
-        create: (context) => SignInBloc(
-            authRepository: context.read<AuthenticationBloc>().authRepository),
+      return MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => SignInBloc(
+                authRepository:
+                    context.read<AuthenticationBloc>().authRepository,
+                userRepo: UserRepoImpl()),
+          ),
+          BlocProvider(
+              create: (context) => UserBloc(baseUserService: UserServices()))
+        ],
         child: SigninScreen(toggleView: toggleview),
       );
     }

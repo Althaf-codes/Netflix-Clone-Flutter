@@ -10,7 +10,14 @@ sealed class SignupState extends Equatable {
 
 class SignupInitial extends SignupState {}
 
-class SignUpSuccess extends SignupState {}
+class SignUpSuccess extends SignupState {
+  final UserModel user;
+
+  const SignUpSuccess(this.user);
+
+  @override
+  List<Object> get props => [user];
+}
 
 class SignUpFailure extends SignupState {
   final String? message;

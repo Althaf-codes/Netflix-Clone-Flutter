@@ -16,15 +16,9 @@ class Header extends StatelessWidget {
       children: [
         SizedBox(
           height: 500,
-          // decoration: const BoxDecoration(
-          //     image: DecorationImage(
-          //         fit: BoxFit.cover,
-          //         image: NetworkImage(
-          //           'https://images-cdn.ubuy.co.in/63b7b107d4159432fb5ec817-avengers-infinity-war-movie-poster.jpg',
-          //         ))),
           child: Image.network(
-            // 'https://m.media-amazon.com/images/I/91zTlD7AY1L._AC_UF1000,1000_QL80_.jpg',
-            'https://images-cdn.ubuy.co.in/63b7b107d4159432fb5ec817-avengers-infinity-war-movie-poster.jpg',
+            'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/adventure-movie-poster-template-design-7b13ea2ab6f64c1ec9e1bb473f345547_screen.jpg?ts=1636999411',
+            // 'https://images-cdn.ubuy.co.in/63b7b107d4159432fb5ec817-avengers-infinity-war-movie-poster.jpg',
             fit: BoxFit.cover,
             height: 400,
             width: MediaQuery.of(context).size.width,

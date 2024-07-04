@@ -8,8 +8,8 @@ class Poster {
   String videoType;
   bool hasNewEpisodes;
   bool isTop10;
-  int duration;
-  int rating;
+  double duration;
+  double rating;
   int views;
   String thumbnail;
 
@@ -35,8 +35,8 @@ class Poster {
     String? videoType,
     bool? hasNewEpisodes,
     bool? isTop10,
-    int? duration,
-    int? rating,
+    double? duration,
+    double? rating,
     int? views,
     String? thumbnail,
   }) =>
@@ -66,9 +66,9 @@ class Poster {
         videoType: json["videoType"] ?? '',
         hasNewEpisodes: json["hasNewEpisodes"] ?? '',
         isTop10: json["isTop10"] ?? '',
-        duration: json["duration"] ?? '',
-        rating: json["rating"] ?? '',
-        views: json["views"] ?? '',
+        duration: json["duration"] ?? 0,
+        rating: json["rating"] ?? 0,
+        views: json["views"] ?? 0,
         thumbnail: json["thumbnail"] ?? '',
       );
 

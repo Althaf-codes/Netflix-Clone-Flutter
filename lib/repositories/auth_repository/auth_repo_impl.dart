@@ -14,10 +14,16 @@ class FirebaseAuthRepository implements AuthRepository {
   }
 
   @override
-  Future<void> signIn(String email, String password) async {
+  Future<UserModel> signIn(String email, String password) async {
     try {
-      await _firebaseAuth.signInWithEmailAndPassword(
-          email: email, password: password);
+      UserCredential userCredential = await _firebaseAuth
+          .signInWithEmailAndPassword(email: email, password: password);
+      UserModel userModel = UserModel.empty;
+
+      userModel =
+          userModel.copyWith(email: email, uid: userCredential.user!.uid);
+
+      return userModel;
     } catch (e) {
       rethrow;
     }
