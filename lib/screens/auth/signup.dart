@@ -48,7 +48,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       minimum: EdgeInsets.zero,
       child: Scaffold(
         backgroundColor:
-            Colors.white, // const Color.fromARGB(255, 232, 240, 236),
+            AppColor.white, // const Color.fromARGB(255, 232, 240, 236),
         //backgroundColor: Colors.grey[300],
         body: BlocListener<SignUpBloc, SignupState>(
           listener: (context, state) {
@@ -114,8 +114,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               color: Colors.grey.withOpacity(0.2))
                         ]),
                         child: TextFormField(
+                          // style: TextStyle(color: AppColor.white),
                           cursorColor: AppColor.red,
                           decoration: InputDecoration(
+                              // hintStyle: TextStyle(color: AppColor.white),
                               labelStyle: const TextStyle(color: AppColor.red),
                               hintText: 'Enter your name',
                               labelText: 'Username',
@@ -137,7 +139,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     style: BorderStyle.solid,
                                     width: 1),
                               ),
-                              focusColor: Colors.white,
+                              focusColor: AppColor.white,
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20),
                                 borderSide: const BorderSide(
@@ -153,7 +155,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 ),
                                 onPressed: () {},
                               ),
-                              fillColor: Colors.white,
+                              fillColor: AppColor.white,
                               filled: true),
                           controller: usernamecontroller,
                           validator: (name) {

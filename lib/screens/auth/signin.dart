@@ -55,7 +55,7 @@ class _SigninScreenState extends State<SigninScreen> {
       minimum: EdgeInsets.zero,
       child: Scaffold(
         backgroundColor:
-            Colors.white, // const Color.fromARGB(255, 232, 240, 236),
+            AppColor.white, // const Color.fromARGB(255, 232, 240, 236),
         //backgroundColor: Colors.grey[300],
         body: BlocListener<SignInBloc, SignInState>(
           listener: (context, state) {

@@ -48,7 +48,24 @@ class _SeriesDetailsViewState extends State<SeriesDetailsView> {
           Container(
             height: 200,
             width: MediaQuery.of(context).size.width,
-            color: AppColor.greyDark1,
+            decoration: BoxDecoration(
+                color: AppColor.greyDark1,
+                image: DecorationImage(
+                  image: NetworkImage(widget.currentVideo.thumbnail),
+                  fit: BoxFit.cover,
+                  opacity: 5,
+                  // colorFilter:
+                  //     ColorFilter.mode(Colors.black, BlendMode.overlay),
+                )),
+            child: Center(
+              child: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.play_circle_outline,
+                    size: 40,
+                    color: AppColor.white,
+                  )),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),

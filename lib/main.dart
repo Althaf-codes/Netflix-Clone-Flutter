@@ -82,35 +82,43 @@ class AuthWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
-      builder: (context, state) {
-        if (state.status == AuthenticationStatus.authenticated) {
-          return MultiBlocProvider(
-            providers: [
-              BlocProvider<SignInBloc>(
-                create: (BuildContext context) => SignInBloc(
-                    authRepository:
-                        context.read<AuthenticationBloc>().authRepository,
-                    userRepo: UserRepoImpl()),
-              ),
-              BlocProvider(
-                create: (context) => UserBloc(
-                    baseUserService: context.read<UserBloc>().baseUserService)
-                  ..add(GetUser(
-                      email: context.read<AuthenticationBloc>().usermodel.email,
-                      uid: context.read<AuthenticationBloc>().usermodel.uid)),
-              ),
-              BlocProvider(
-                  create: (context) =>
-                      RecentMovieBloc(recentMovieRepo: RecentMovieRepoImpl())
+          builder: (context, state) {
+            if (state.status == AuthenticationStatus.authenticated) {
+              return MultiBlocProvider(
+                providers: [
+                  BlocProvider<SignInBloc>(
+                    create: (BuildContext context) => SignInBloc(
+                        authRepository:
+                            context.read<AuthenticationBloc>().authRepository,
+                        userRepo: UserRepoImpl()),
+                  ),
+                  BlocProvider(
+                    create: (context) => UserBloc(
+                        baseUserService:
+                            context.read<UserBloc>().baseUserService)
+                      ..add(GetUser(
+                          email: context
+                              .read<AuthenticationBloc>()
+                              .usermodel
+                              .email,
+                          uid: context
+                              .read<AuthenticationBloc>()
+                              .usermodel
+                              .uid)),
+                  ),
+                  BlocProvider(
+                      create: (context) => RecentMovieBloc(
+                          recentMovieRepo: RecentMovieRepoImpl())
                         ..add(GetRecentMovies(page: 1))),
-              BlocProvider(
-                  create: (context) =>
-                      Top10MovieBloc(top10movieRepo: Top10MovieRepoImpl())
-                        ..add(GetTop10Movies())),
-              BlocProvider(
-                  create: (context) =>
-                      GenreMovieBloc(movieByGenreRepo: MovieByGenreRepoImpl())
+                  BlocProvider(
+                      create: (context) =>
+                          Top10MovieBloc(top10movieRepo: Top10MovieRepoImpl())
+                            ..add(GetTop10Movies())),
+                  BlocProvider(
+                      create: (context) => GenreMovieBloc(
+                          movieByGenreRepo: MovieByGenreRepoImpl())
                         ..add(GetMovieByGenre(
                             genre: context
                                 .read<AuthenticationBloc>()
@@ -118,16 +126,17 @@ class AuthWrapper extends StatelessWidget {
                                 .preferences
                                 .genres,
                             pageNo: 1))),
-              BlocProvider(
-                  create: (context) => SeriesBloc(seriesRepo: SeriesRepoImpl())
-                    ..add(const GetSeries(pageNo: 1))),
-            ],
-            child: MainScreen(),
-          );
-        } else {
-          return Toggle();
-        }
-      },
-    ));
+                  BlocProvider(
+                      create: (context) =>
+                          SeriesBloc(seriesRepo: SeriesRepoImpl())
+                            ..add(const GetSeries(pageNo: 1))),
+                ],
+                child: MainScreen(),
+              );
+            } else {
+              return Toggle();
+            }
+          },
+        ));
   }
 }
