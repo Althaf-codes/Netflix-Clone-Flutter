@@ -33,14 +33,15 @@ The frontend component of a Netflix clone, built with Flutter. This app provides
 
 
 ## Screenshots
-<img src ="screenshot/netflix_clone_1.png" width="400px">
-<img src ="screenshot/netflix_clone_2.png" width="400px">
-<img src ="screenshot/netflix_clone_3.png" width="400px">
-<img src ="screenshot/netflix_clone_4.png" width="400px">
-<img src ="screenshot/netflix_clone_5.png" width="400px">
-<img src ="screenshot/netflix_clone_6.png" width="400px">
-<img src ="screenshot/netflix_clone_7.png" width="400px">
-<img src ="screenshot/netflix_clone_8.png" width="400px">
-<img src ="screenshot/netflix_clone_9.png" width="400px">
-<img src ="screenshot/netflix_clone_10.png" width="400px">
-<img src ="screenshot/netflix_clone_11.png" width="400px">
+<img src ="screenshots/netflix_clone_1.png" width="400px">
+<img src ="screenshots/netflix_clone_2.png" width="400px">
+<img src ="screenshots/netflix_clone_3.png" width="400px">
+<img src ="screenshots/netflix_clone_4.png" width="400px">
+<img src ="screenshots/netflix_clone_5.png" width="400px">
+<img src ="screenshots/netflix_clone_6.png" width="400px">
+<img src ="screenshots/netflix_clone_7.png" width="400px">
+<img src ="screenshots/netflix_clone_8.png" width="400px">
+<img src ="screenshots/netflix_clone_9.png" width="400px">
+<img src ="screenshots/netflix_clone_10.png" width="400px">
+<img src ="screenshots/netflix_clone_11.png" width="400px">
+
